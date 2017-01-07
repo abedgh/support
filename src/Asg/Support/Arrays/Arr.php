@@ -61,6 +61,76 @@ class Arr {
     public function push($items){
 
     }
+    /**
+     * @return mixed[];
+     * */
+    public function keys(){
+        return array_keys($this->items);
+    }
+    /**
+     * @return mixed[];
+    */
+    public function values(){
+        return array_values($this->items);
+    }
+    /**
+     * @param mixed $key;
+     * @return boolean;
+    */
+    public function exists($key){
+        return array_key_exists($key,$this->items);
+    }
+    /**
+     * @return number;
+    */
+    public function sum(){
+        return array_sum($this->items);
+    }
+    /**
+     * @return number;
+    */
+    public function avg(){
+        $count = $this->count();
+        if ($count>0){
+            return $this->sum()/$count;
+        }
+        //Throws new exceptions here
+        return 0;
+    }
+    /**
+     * @return number|null;
+     * */
+    public function min(){
+        return Arr::make($this->items)->sort()->first();
+    }
+    /**
+     * @return number|null;
+     * */
+    public function max(){
+        return Arr::make($this->items)->sort()->last();
+    }
+    /**
+     * @return Arr;
+    */
+    public function sort(){
+        sort($this->items);
+        return $this;
+    }
+    /**
+     * @return mixed|null
+    */
+    public function first(){
+        if ($this->count()> 0){
+            return $this->items[0];
+        }
+        return null;
+    }
+    /**
+     * @return mixed|null
+     */
+    public function last(){
+        return end($this->items);
+    }
 
 
     protected function isArray($item){

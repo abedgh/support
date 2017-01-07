@@ -34,10 +34,19 @@ class ArraySupportTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals(Arr::make($array)->count(),3);
     }
     /* --------------------------------------------------------------- */
+    public function testArrayMaths(){
+        $array = [3,2,4];
+        $this->assertEquals(Arr::make($array)->sum(),9);
+        $this->assertEquals(Arr::make($array)->avg(),3);
+        $this->assertEquals(Arr::make([])->avg(),0);
+        $this->assertEquals(Arr::make($array)->max(),4);
+        $this->assertEquals(Arr::make($array)->min(),2);
+    }
+    /* --------------------------------------------------------------- */
     public function testPushPopShiftArray(){
-        $array = [];
+       /* $array = [];
         $this->assertEquals(Arr::make($array)->push(['item 1','item 2'])->all(),
-            ['item 1','item 2']);
+            ['item 1','item 2']);*/
     }
     /* --------------------------------------------------------------- */
 

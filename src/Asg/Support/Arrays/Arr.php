@@ -55,11 +55,46 @@ class Arr {
         return $this;
     }
     /**
-     * @param mixed|array
+     * @param mixed|array $item;
      * @return Arr;
      * */
-    public function push($items){
+    public function push($item){
+        if ( !is_array($item) ){
+            $item = [$item];
+        }
+        foreach($item as $value){
+            array_push($this->items,$value);
+        }
+        return $this;
+    }
+    /**
+     * @param int $repeat;
+     * @return Arr;
+     * */
+    public function pop($repeat = 1){
+        $count = $this->count();
+        $repeat = ($repeat > $count)?$count:$repeat;
+        for($i=0;$i<$repeat;$i++){
+            array_pop($this->items);
+        }
+        return $this;
+    }
+    public function shift($repeat = 1){
+        $count = $this->count();
+        $repeat = ($repeat > $count)?$count:$repeat;
+        for($i=0;$i<$repeat;$i++){
+            array_shift($this->items);
+        }
 
+        return $this;
+    }
+
+    /**
+     * @return Arr;
+     * */
+    public function unique(){
+        $this->items = array_unique($this->items);
+        return $this;
     }
     /**
      * @return mixed[];

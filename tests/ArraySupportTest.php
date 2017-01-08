@@ -43,10 +43,19 @@ class ArraySupportTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals(Arr::make($array)->min(),2);
     }
     /* --------------------------------------------------------------- */
+    public function testFirstLastElementsOfArray(){
+        $array = [];
+        $this->assertEquals(Arr::make($array)->first(),null);
+        $this->assertEquals(Arr::make($array)->last(),null);
+        $this->assertEquals(Arr::make($array)
+            ->push(['1st item','2nd item','last item'])
+            ->last(),'last item');
+    }
+    /* --------------------------------------------------------------- */
     public function testPushPopShiftArray(){
-       /* $array = [];
-        $this->assertEquals(Arr::make($array)->push(['item 1','item 2'])->all(),
-            ['item 1','item 2']);*/
+        $array = ['item 1','item 2','item 3','item 4','item 5'];
+        $this->assertEquals(Arr::make($array)->pop(2)->all(),['item 1','item 2','item 3']);
+        $this->assertEquals(Arr::make($array)->shift(6)->all(),[]);
     }
     /* --------------------------------------------------------------- */
 

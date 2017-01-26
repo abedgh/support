@@ -45,17 +45,24 @@ class ArraySupportTest extends PHPUnit_Framework_TestCase{
     /* --------------------------------------------------------------- */
     public function testFirstLastElementsOfArray(){
         $array = [];
-        $this->assertEquals(Arr::make($array)->first(),null);
-        $this->assertEquals(Arr::make($array)->last(),null);
-        $this->assertEquals(Arr::make($array)
+
+        $this->assertNull(Arr::make($array)->first());
+        $this->assertNull(Arr::make($array)->last());
+        $this->assertEquals('last item',
+            Arr::make($array)
             ->push(['1st item','2nd item','last item'])
-            ->last(),'last item');
+            ->last());
     }
     /* --------------------------------------------------------------- */
     public function testPushPopShiftArray(){
         $array = ['item 1','item 2','item 3','item 4','item 5'];
-        $this->assertEquals(Arr::make($array)->pop(2)->all(),['item 1','item 2','item 3']);
-        $this->assertEquals(Arr::make($array)->shift(6)->all(),[]);
+        $this->assertEquals(['item 1','item 2','item 3'],Arr::make($array)->pop(2)->all());
+        $this->assertEquals([],Arr::make($array)->shift(6)->all());
+    }
+    /* --------------------------------------------------------------- */
+    public function testConvertArray2Int(){
+        $items = ['1',2,'foo'];
+        $this->assertEquals([1,2,0],Arr::make($items)->toInt()->all());
     }
     /* --------------------------------------------------------------- */
 

@@ -18,6 +18,16 @@ class Arr {
     function __construct($items = []){
         $this->items = $items;
     }
+
+    /**
+     * @return Arr;
+     * */
+    public function toInt(){
+        array_walk($this->items,function(&$item){
+            $item = intval($item);
+        });
+        return $this;
+    }
     /**
      * @param mixed[] $item;
      * @return Arr;
@@ -164,7 +174,10 @@ class Arr {
      * @return mixed|null
      */
     public function last(){
-        return end($this->items);
+        if ($this->count()> 0){
+            return end($this->items);
+        }
+        return null;
     }
 
 

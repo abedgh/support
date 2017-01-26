@@ -179,7 +179,29 @@ class Arr {
         }
         return null;
     }
-
+    /**
+     * @param mixed|array;
+     * @return Arr;
+     * */
+    public function merge($item){
+        if ( !is_array($item) ){
+            $item=[$item];
+        }
+        $this->items = array_merge($this->items,$item);
+        return $this;
+    }
+    /**
+     * @param \Closure $callback;
+     * @return Arr;
+     * */
+    public function each(\Closure $callback){
+        foreach($this->items as $key=>$item){
+            if ($callback($item, $key) === false) {
+                break;
+            }
+        }
+        return $this;
+    }
 
     protected function isArray($item){
         return is_array($item);

@@ -65,6 +65,19 @@ class ArraySupportTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals([1,2,0],Arr::make($items)->toInt()->all());
     }
     /* --------------------------------------------------------------- */
+    public function testMergeArrays(){
+        $items = ['one','two'];
+        $this->assertCount(5,Arr::make($items)->merge(['three','four','five'])->all());
+        $this->assertEquals(['one','two','three'],Arr::make($items)->merge('three')->all());
+    }
+    /* --------------------------------------------------------------- */
+    public function testArrayIteration(){
+
+        Arr::make(['one','two'])->each(function($item,$key){
+            var_dump($key.' - '.$item);
+        });
+    }
+    /* --------------------------------------------------------------- */
 
 
 }

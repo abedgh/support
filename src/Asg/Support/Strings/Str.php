@@ -25,6 +25,35 @@ class Str {
     public static function make($value){
         return new static($value);
     }
+    /**
+     * @return Str;
+     * */
+    public function reverse(){
+        $this->value = strrev($this->value);
+        return $this;
+    }
+
+
+    /**
+     * @param int $start;
+     * @param null|int $length;
+     * @return Str;
+     * */
+    public function subString($start,$length = null){
+        if ($length == null){
+            $length = $this->length()-$start;
+        }
+        $this->value = substr($this->value,$start,$length);
+        return $this;
+    }
+    /**
+     * @param string $find;
+     * @param int $offset;
+     * @return int;
+     * */
+    public function pos($find,$offset = 0){
+        return strpos($this->value,$find,$offset);
+    }
 
     /**
      * @return int;

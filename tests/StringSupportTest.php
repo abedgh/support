@@ -34,4 +34,18 @@ class StringSupportTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals('abc',Str::make('AbC')->lower()->value());
         $this->assertEquals('ABC',Str::make('AbC')->upper()->value());
     }
+    /** @test*/
+    function testSubstringMethod(){
+        $this->assertEquals('oo',Str::make('foo')->subString(1)->value());
+    }
+    /** @test*/
+    function testStringPosition(){
+        $this->assertEquals(4,Str::make('foo bar far')->pos('bar'));
+        $this->assertEquals(12,Str::make('foo bar far bar2')->pos('bar',5));
+    }
+    /** @test*/
+    public function testReverseString(){
+        $this->assertEquals('rab',Str::make('bar')->reverse()->value());
+    }
+
 }

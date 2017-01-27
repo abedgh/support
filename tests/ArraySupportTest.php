@@ -73,9 +73,9 @@ class ArraySupportTest extends PHPUnit_Framework_TestCase{
     /* --------------------------------------------------------------- */
     public function testArrayIteration(){
 
-        Arr::make(['one','two'])->each(function($item,$key){
+       /* Arr::make(['one','two'])->each(function($item,$key){
             var_dump($key.' - '.$item);
-        });
+        });*/
     }
     /* --------------------------------------------------------------- */
 
